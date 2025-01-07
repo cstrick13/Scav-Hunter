@@ -9,17 +9,6 @@ function Header({pageTitle}) {
 
             <div className="header-btns">
 
-                    <NavLink to="/">
-                      <button className="btn">
-                          Books
-                      </button>
-                    </NavLink>
-
-                    <NavLink to="/add-book">
-                      <button className="btn">
-                          Add Book +
-                      </button>
-                    </NavLink>
 
                     <button className="btn transparent">
                       Logout
