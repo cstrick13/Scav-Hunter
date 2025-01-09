@@ -1,6 +1,7 @@
 import FullPageLoader from '../components/FullPageLoader.jsx';
 import {useState} from 'react';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/config.js';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -10,6 +11,7 @@ function LoginPage() {
   const [loginType, setLoginType] = useState('login');
   const [userCreds,setUserCreds] = useState({});
   console.log('AUth is working',auth);
+  const navigate = useNavigate();
 
   function handleCreds(e){
     setUserCreds({...userCreds, [e.target.name]: e.target.value});
@@ -27,7 +29,10 @@ function LoginPage() {
     signInWithEmailAndPassword(auth, userCreds.email, userCreds.password)
       .then((userCredential) => {
         // Successful login
+        const uid = userCredential.user.uid;
         console.log('User signed in:', userCredential.user);
+
+        navigate(`/user/${uid}`);
       })
       .catch((error) => {
         // Handle errors here
