@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { auth, db } from '../firebase/config.js'; // Ensure Firestore is properly initialized in config.js
+import { auth, db } from '../firebase/config.js';
 import { doc, collection, addDoc, getDocs, getDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import './UserPage.css'; // Import our custom CSS
 
 function UserPage() {
   const { uid } = useParams(); // Get UID from the route
@@ -11,7 +12,7 @@ function UserPage() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [fileDetails, setFileDetails] = useState({ name: '', url: '' }); // State for file details
   const navigate = useNavigate();
-  //Most of this is jsut how to access files from firebase the gist is to make a shared file from google drive turn on link sharing and then copy the link and paste it in the url field and give it a name
+
   useEffect(() => {
     if (loading) return; // Wait for auth to initialize
     if (error) {
@@ -61,7 +62,7 @@ function UserPage() {
     fetchUploadedFiles();
   }, [user, loading, error, uid, navigate]);
 
-  // This Handle File function is used to add files with URL links it will only be used to add files to the collection but will be removed in the final build since all we need is the download links
+  // Function to add files using the provided name and URL
   const handleAddFile = async () => {
     if (!fileDetails.name || !fileDetails.url) {
       alert('Please provide both the file name and URL.');
@@ -75,9 +76,9 @@ function UserPage() {
         url: fileDetails.url,
         uploadedAt: new Date().toISOString(),
       };
-      await addDoc(userFilesCollectionRef, fileMetadata); // Add file metadata to Firestore
-      setUploadedFiles((prev) => [...prev, fileMetadata]); // Update local state
-      setFileDetails({ name: '', url: '' }); // Clear form
+      await addDoc(userFilesCollectionRef, fileMetadata);
+      setUploadedFiles((prev) => [...prev, fileMetadata]);
+      setFileDetails({ name: '', url: '' });
       alert('File added successfully!');
     } catch (error) {
       console.error('Error adding file:', error);
@@ -86,11 +87,12 @@ function UserPage() {
   };
 
   return (
-    <div>
+    <div className="user-page">
       <h1>Welcome to your page, {userName}!</h1>
       <h2>Your UID: {uid}</h2>
+
       <h2>Add File Metadata</h2>
-      <div>
+      <div className="file-form">
         <input
           type="text"
           placeholder="File Name"
@@ -107,7 +109,7 @@ function UserPage() {
       </div>
 
       <h2>Your Uploaded Files:</h2>
-      <ul>
+      <ul className="file-list">
         {uploadedFiles.map((file, index) => (
           <li key={index}>
             <a href={file.url} target="_blank" rel="noopener noreferrer">

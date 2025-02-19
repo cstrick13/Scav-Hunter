@@ -51,15 +51,8 @@ function LoginPage() {
         
         <div className="container login-page">
           <section>
-            <h1>Figure out who took the sensitive data</h1>
+            <h1>Figure out who destroyed the mushroom kingdom</h1>
             <p>Login into User's account for their file usage</p>
-            <div className="login-type">
-              <button 
-                className={`btn ${loginType == 'login' ? 'selected' : ''}`}
-                onClick={()=>setLoginType('login')}>
-                  Login
-              </button>
-            </div>
             <form className="add-form login">
                   <div className="form-control">
                       <label>Email *</label>
@@ -74,6 +67,10 @@ function LoginPage() {
               </form>
           </section>
         </div>
+        <div className="secret-block">
+        <div className="question-block"></div>
+        <a href="https://docs.google.com/document/d/1zZNltKrXGQhR_MJXOS9dPhZV8hL8tsc32ZA00lqSVCQ/edit?usp=drive_link" target="_blank" className="hidden-pdf-button">Secret Document</a>
+      </div>
       </>
     )
   }

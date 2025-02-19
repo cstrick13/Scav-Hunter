@@ -1,0 +1,96 @@
+/* Import a retro game font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Use a Mario-themed background image */
+body {
+  margin: 0;
+  padding: 0;
+  background: url('../assets/super-mario-bros-1920x1080.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Container for the user page with a semi-transparent overlay */
+.user-page {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 40px auto;
+  max-width: 800px;
+  border: 5px solid #ff0000; /* Mario red */
+  border-radius: 10px;
+  box-shadow: 0 0 15px #000;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+}
+
+/* Headings styling */
+.user-page h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #000;
+}
+
+.user-page h2 {
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+/* Form styling for adding a file */
+.file-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.file-form input {
+  padding: 10px;
+  width: 80%;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+  background: #fff;
+  color: #000;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+}
+
+.file-form button {
+  padding: 10px 20px;
+  background: #ffdd00; /* bright Mario yellow */
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.file-form button:hover {
+  transform: scale(1.1);
+  background: #ffcc00;
+}
+
+/* Uploaded files list styling */
+.file-list {
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.file-list a {
+  color: #ffdd00;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+}
+
+.file-list a:hover {
+  text-decoration: underline;
+}
