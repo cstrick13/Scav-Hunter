@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { auth, db } from '../firebase/config.js';
 import { doc, collection, addDoc, getDocs, getDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth'; // Import signOut from Firebase
 import './UserPage.css'; // Import our custom CSS
 
 function UserPage() {
@@ -86,9 +87,25 @@ function UserPage() {
     }
   };
 
+  // Function to handle logout
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/'); // Redirect to the login page or home page
+    } catch (error) {
+      console.error('Error logging out:', error);
+      alert('Logout failed. Please try again.');
+    }
+  };
+
   return (
     <div className="user-page">
-      <h1>Welcome, {userName}!</h1>
+      <div className="header">
+        <h1>Welcome, {userName}!</h1>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
       <h2>Add File Metadata</h2>
       <div className="file-form">
@@ -96,13 +113,17 @@ function UserPage() {
           type="text"
           placeholder="File Name"
           value={fileDetails.name}
-          onChange={(e) => setFileDetails({ ...fileDetails, name: e.target.value })}
+          onChange={(e) =>
+            setFileDetails({ ...fileDetails, name: e.target.value })
+          }
         />
         <input
           type="text"
           placeholder="File URL"
           value={fileDetails.url}
-          onChange={(e) => setFileDetails({ ...fileDetails, url: e.target.value })}
+          onChange={(e) =>
+            setFileDetails({ ...fileDetails, url: e.target.value })
+          }
         />
         <button onClick={handleAddFile}>Add File</button>
       </div>
