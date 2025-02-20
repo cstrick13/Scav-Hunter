@@ -88,8 +88,7 @@ function UserPage() {
 
   return (
     <div className="user-page">
-      <h1>Welcome to your page, {userName}!</h1>
-      <h2>Your UID: {uid}</h2>
+      <h1>Welcome, {userName}!</h1>
 
       <h2>Add File Metadata</h2>
       <div className="file-form">

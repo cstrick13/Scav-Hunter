@@ -16,6 +16,7 @@ h1 {
   color: #ffdd00;
   text-shadow: 2px 2px #000;
   margin-top: 20px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Container styling for the login page */
@@ -33,7 +34,7 @@ h1 {
 
 /* Section headings inside the login container */
 .container.login-page section h1 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
