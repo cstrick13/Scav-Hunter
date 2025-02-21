@@ -106,29 +106,6 @@ function UserPage() {
           Logout
         </button>
       </div>
-
-      <h2>Add File Metadata</h2>
-      <div className="file-form">
-        <input
-          type="text"
-          placeholder="File Name"
-          value={fileDetails.name}
-          onChange={(e) =>
-            setFileDetails({ ...fileDetails, name: e.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="File URL"
-          value={fileDetails.url}
-          onChange={(e) =>
-            setFileDetails({ ...fileDetails, url: e.target.value })
-          }
-        />
-        <button onClick={handleAddFile}>Add File</button>
-      </div>
-
-      <h2>Your Uploaded Files:</h2>
       <ul className="file-list">
         {uploadedFiles.map((file, index) => (
           <li key={index}>
